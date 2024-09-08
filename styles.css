@@ -107,6 +107,20 @@ h2{
 
 }
 
+@keyframes getIn {
+    0% {
+        transform: translate(-30px, 10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 1;
+
+    }
+}
+#popular-vms > div, #response-vms > div{
+animation: getIn 100ms ease-in;
+}
 #popular-vms > div, #response-vms > div{
  padding: 10px;
  margin-right: 10px;
