@@ -2,6 +2,7 @@ import { api } from "./service/api.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
   await retriveData();
+  formSubmitOveright();
 });
 
 async function retriveData() {
@@ -42,4 +43,14 @@ async function retriveData() {
     }
   );
   window.dispatchEvent(new Event("data-loaded"));
+}
+
+function formSubmitOveright() {
+  const form = document.querySelector("#vm-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    app.form = data;
+    window.dispatchEvent(new Event("form-submission"));
+  });
 }
