@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VM</title>
+  </head>
+  <body>
+    <section id="form-section">
+      <h2>Select your VM requirements</h2>
+      <form id="vm-form" method="get">
+        <div>
+          <label for="os">OS/Software:</label>
+          <select name="os" id="os">
+            Linux
+            <option for="Linux">Linux</option>
+            <option for="Windows">Windows</option>
+          </select>
+        </div>
+        <div>
+          <label for="memoryInMB">Ram (GB):</label>
+          <select name="memoryInMB" id="memoryInMB"></select>
+        </div>
+        <div>
+          <label for="numberOfCores">CPU cores:</label>
+          <select name="numberOfCores" id="numberOfCores"></select>
+        </div>
+        <div id="submit-button-container">
+          <input type="submit" />
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
