@@ -1,9 +1,21 @@
 import { api } from "./service/api.js";
 
+window.app = {
+  data: [],
+  costEfficient: { unitPricePerUnit: "Infinity" },
+  expensive: { unitPricePerUnit: "-Infinity" },
+  ramOptions: [],
+  coreOptions: [],
+  form: undefined,
+  mediumPrice: 0,
+};
+
 window.addEventListener("DOMContentLoaded", async () => {
   await retriveData();
   formSubmitOveright();
 });
+window.addEventListener("data-loaded", insertRamOptions);
+window.addEventListener("data-loaded", insertCoreOptions);
 
 async function retriveData() {
   app.data = await api.fetchData();
@@ -45,6 +57,26 @@ async function retriveData() {
   window.dispatchEvent(new Event("data-loaded"));
 }
 
+function insertRamOptions() {
+  const ramSelector = document.querySelector("#memoryInMB");
+  if (ramSelector) {
+    app.ramOptions
+      .sort((a, b) => a - b)
+      .forEach((e) => {
+        ramSelector.innerHTML += `<option value="${e}">${e / 1024}GB</option>`;
+      });
+  }
+}
+function insertCoreOptions() {
+  const coresSelector = document.querySelector("#numberOfCores");
+  if (coresSelector) {
+    app.coreOptions
+      .sort((a, b) => a - b)
+      .forEach((e) => {
+        coresSelector.innerHTML += `<option value="${e}">${e}</option>`;
+      });
+  }
+}
 function formSubmitOveright() {
   const form = document.querySelector("#vm-form");
   form.addEventListener("submit", (e) => {
