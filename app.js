@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 });
 window.addEventListener("data-loaded", insertRamOptions);
 window.addEventListener("data-loaded", insertCoreOptions);
+window.addEventListener("data-loaded", insertVmOverview);
 window.addEventListener("form-submission", findAndInsertVmResponse);
 async function retriveData() {
   app.data = await api.fetchData();
@@ -116,6 +117,21 @@ function findAndInsertVmResponse() {
       "#response-vms"
     ).innerHTML = `<p id='not-found'>No machine fullfill your requirements, please try a diferent setup!</p>`;
   }
+}
+function insertVmOverview() {
+  const popularVmsContainer = document.querySelector("#popular-vms");
+  popularVmsContainer.innerHTML +=
+    VmItem(app.expensive, "Most Expensive") +
+    VmItem(app.costEfficient, "Less Expensive");
+  document.querySelector(
+    "#response-section"
+  ).firstElementChild.innerHTML += `<div id="medium-price">Our medium price is ${app.mediumPrice.toLocaleString(
+    "en-US",
+    {
+      style: "currency",
+      currency: "USD",
+    }
+  )}<span>/hour</span></div>`;
 }
 
 function VmItem(vmData, title) {
