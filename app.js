@@ -86,3 +86,61 @@ function formSubmitOveright() {
     window.dispatchEvent(new Event("form-submission"));
   });
 }
+function findAndInsertVmResponse() {
+  const form = Object.fromEntries(app.form.entries());
+  app.selectedItem = app.data.reduce(
+    (acc, curr) => {
+      if (
+        curr.memoryInMB >= form.memoryInMB &&
+        curr.os === form.os &&
+        curr.numberOfCores >= form.numberOfCores &&
+        Number(acc.unitPricePerUnit.replaceAll(",", ".")) >
+          Number(curr.unitPricePerUnit.replaceAll(",", "."))
+      ) {
+        acc = curr;
+      }
+      return acc;
+    },
+    {
+      unitPricePerUnit: "Infinity",
+    }
+  );
+
+  if (app.selectedItem.os) {
+    document.querySelector("#response-vms").innerHTML = VmItem(
+      app.selectedItem,
+      "Suits your case"
+    );
+  } else {
+    document.querySelector(
+      "#response-vms"
+    ).innerHTML = `<p id='not-found'>No machine fullfill your requirements, please try a diferent setup!</p>`;
+  }
+}
+
+function VmItem(vmData, title) {
+  return `
+    <div classname='card'>
+      <p class='title'> ${title}<p>
+      <p class='price'>${Number(
+        vmData.unitPricePerUnit.replace(",", ".")
+      ).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      })}</p><span>/hour</span>
+      <p class="name">${vmData.meterName}</p>
+      <div>
+        <p>OS/Software:</p>   
+        <p>${vmData.os}</p>
+      </div>
+      <div>
+        <p>Ram:</p>   
+        <p>${vmData.memoryInMB / 1024}</p>
+      </div>
+      <div>
+        <p>Cores:</p>   
+        <p>${vmData.numberOfCores}</p>
+      </div>
+      
+    </div>`;
+}
