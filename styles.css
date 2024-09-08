@@ -12,3 +12,54 @@ h2{
     border-bottom: 1px solid rgba(211, 211, 211, 0.322);
     padding-bottom: 5px;
 }
+
+#form-section {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 38px 48px;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+
+#vm-form{
+    display: flex;
+    flex-direction: column;
+}
+#vm-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+#vm-form > div {
+    flex:1;
+    flex-direction: column;
+    flex:1;
+    margin: 10px 0;
+}
+ #vm-form > div:last-child{
+    align-self: center;
+ }
+ #vm-form > div:last-child input{
+    height: 40px;
+    border-color: transparent;
+    background-color: #2463eb;
+    color:#fff;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: large;
+
+ }
+
+#vm-form select {
+    width: 100%;
+    min-height: 30px;
+    background-color: #ffffff97;
+    border-color: rgba(169, 169, 169, 0.244);
+    border-radius: 5px;
+    padding: 5px;
+  
+
+}
