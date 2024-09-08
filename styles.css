@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    align-items: baseline;
+    justify-items: center;
+    justify-content: baseline;
+    padding: 20px;
+    background-color: #fafafa;
+  
+}
+h2{
+    font-weight: 500;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.322);
+    padding-bottom: 5px;
+}
