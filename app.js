@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 });
 window.addEventListener("data-loaded", insertRamOptions);
 window.addEventListener("data-loaded", insertCoreOptions);
-
+window.addEventListener("form-submission", findAndInsertVmResponse);
 async function retriveData() {
   app.data = await api.fetchData();
   app = app.data.reduce(
