@@ -1,5 +1,5 @@
 
-TO run this project, im assuming you are using vscode, so use live server extension  [https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer] because im using type module export in my js file so without a server it would not work
+TO run this project im assuming you are using vscode, so use live server extension  [https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer] because im using type module export in my js file so without a server it would not work
 
 
 
